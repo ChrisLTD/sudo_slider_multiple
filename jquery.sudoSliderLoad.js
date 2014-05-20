@@ -7,59 +7,59 @@
   runOnImagesLoaded($(".slider img"), true, function() {
 
     $(".slider-container").each(function(index) {
-        var $this = $(this);
+      var $this = $(this);
 
-        $this.find(".slider-loading").fadeTo(400,0,function (){
-          $(this).remove();
-        });
+      $this.find(".slider-loading").fadeTo(400,0,function (){
+        $(this).remove();
+      });
 
-        var slides = [];
+      var slides = [];
 
-        $this.find(".slider li").each(function (index, elem) {
-          var _$this = $(this);
-          slides.push(_$this);
-          _$this.detach();
-        });
+      $this.find(".slider li").each(function (index, elem) {
+        var _$this = $(this);
+        slides.push(_$this);
+        _$this.detach();
+      });
 
-        for (var i = 0; slides.length * 2 > i; i++) {
-          $this.find(".slider ul").append(slides[i % slides.length].clone());
-        }
+      for (var i = 0; slides.length * 2 > i; i++) {
+        $this.find(".slider ul").append(slides[i % slides.length].clone());
+      }
 
-        var sudoSlider = $this.find('.slider').sudoSlider({
-          prevNext:false,
-          continuous:true,
-          autowidth:false,
-          autoheight:false,
-          ease:ease,
-          speed:speed,
-          beforeAnimation: function(t){
-            var width = $(this).width();
-            var parentWidth = $this.find(".slider").parent().width();
-            var marginleft = (parentWidth - width) / 2;
-            $this.find('.slider').stop().animate({marginLeft:marginleft},{duration:speed,easing:ease});
-            $this.find('.slider-left, .slider-right').stop().animate({width:marginleft+0.5},{duration:speed,easing:ease});
-          },
-          initcallback: adjust
-        });
-
-        $(window).on("resize focus", adjust);
-
-        function adjust() {
-          var $slider = $this.find('.slider');
-          var width = sudoSlider.getSlide(sudoSlider.getValue("currentSlide")).width();
-          var parentWidth = $slider.parent().width();
+      var sudoSlider = $this.find('.slider').sudoSlider({
+        prevNext:false,
+        continuous:true,
+        autowidth:false,
+        autoheight:false,
+        ease:ease,
+        speed:speed,
+        beforeAnimation: function(t){
+          var width = $(this).width();
+          var parentWidth = $this.find(".slider").parent().width();
           var marginleft = (parentWidth - width) / 2;
-          $slider.stop().animate({marginLeft:marginleft},{duration:0});
-          $this.find('.slider-left, .slider-right').stop().animate({width:marginleft+0.5},{duration:0});
-        }
+          $this.find('.slider').stop().animate({marginLeft:marginleft},{duration:speed,easing:ease});
+          $this.find('.slider-left, .slider-right').stop().animate({width:marginleft+0.5},{duration:speed,easing:ease});
+        },
+        initcallback: adjust
+      });
 
-        $this.find('.slider-right, .slider').click(function(){
-          sudoSlider.goToSlide('next');
-        });
+      $(window).on("resize focus", adjust);
 
-        $this.find('.slider-left').click(function(){
-          sudoSlider.goToSlide('prev');
-        });
+      function adjust() {
+        var $slider = $this.find('.slider');
+        var width = sudoSlider.getSlide(sudoSlider.getValue("currentSlide")).width();
+        var parentWidth = $slider.parent().width();
+        var marginleft = (parentWidth - width) / 2;
+        $slider.stop().animate({marginLeft:marginleft},{duration:0});
+        $this.find('.slider-left, .slider-right').stop().animate({width:marginleft+0.5},{duration:0});
+      }
+
+      $this.find('.slider-right, .slider').click(function(){
+        sudoSlider.goToSlide('next');
+      });
+
+      $this.find('.slider-left').click(function(){
+        sudoSlider.goToSlide('prev');
+      });
 
     }); // .slider-container each
 
