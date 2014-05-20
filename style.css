@@ -1,0 +1,12 @@
+.slider-container { position: relative; width: 100%; margin: 0 auto; overflow: hidden; height: 700px; }
+
+.slider-loading { width: 1200px; height: 700px; color: white; padding-top: 300px; text-align: center; }
+
+.slider { width: 696px; overflow: visible !important; position: relative; }
+
+.slider ul, .slider li{ margin: 0; padding: 0; list-style: none; position: relative; display: block; }
+
+.slider-placeholder{ margin: 0 auto; color: white; width: 250px; }
+
+.slider-left, .slider-right { background-color: rgba(0,0,0,0.8); height: 700px; width: 100px; z-index: 1000; position: absolute; top: 0; }
+.slider-right { right: 0; }
