@@ -34,7 +34,7 @@ $(document).ready(function(){
           speed:speed,
           beforeAnimation: function(t){
             var width = $(this).width();
-            var parentWidth = $(".slider").parent().width();
+            var parentWidth = $this.find(".slider").parent().width();
             var marginleft = (parentWidth - width) / 2;
             $this.find('.slider').stop().animate({marginLeft:marginleft},{duration:speed,easing:ease});
             $this.find('.slider-left, .slider-right').stop().animate({width:marginleft+0.5},{duration:speed,easing:ease});
